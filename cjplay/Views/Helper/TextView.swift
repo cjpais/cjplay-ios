@@ -11,16 +11,6 @@ import SwiftUI
 struct TextView: UIViewRepresentable {
     typealias UIViewType = UITextView
     
-    /*
-    @Environment(\.managedObjectContext) var managedObjectContext
-    @FetchRequest(
-        entity: Note.entity(),
-        sortDescriptors: [
-            NSSortDescriptor(keyPath: \Note.id, ascending: true),
-        ]
-    ) var notes: FetchedResults<Note>
-    */
-    
     @Binding var text: String
     @Binding var height: CGFloat
     
@@ -36,7 +26,7 @@ struct TextView: UIViewRepresentable {
         textView.isUserInteractionEnabled = true
         textView.isScrollEnabled = true
         textView.textColor = .white
-        textView.backgroundColor = .black
+        textView.backgroundColor = .clear
         
         textView.becomeFirstResponder()
         
@@ -46,29 +36,7 @@ struct TextView: UIViewRepresentable {
     func updateUIView(_ uiView: UITextView, context: Context) {
         uiView.delegate = context.coordinator
         uiView.text = text
-
-        /*
-        print(notes.count)
-        if notes.count == 0 {
-            print("creating new note")
-            let newNote = Note(context: managedObjectContext)
-            newNote.id = 0
-            newNote.body = text
-        } else {
-            print("updating existing note")
-            notes[0].id = 0
-            notes[0].body = text
-        }
-        
-        do {
-            try self.managedObjectContext.save()
-        } catch {
-            //print(error)
-        }
-         */
     }
-    
-    
     
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
@@ -81,9 +49,13 @@ struct TextView: UIViewRepresentable {
             self.parent = parent
         }
         
+        func textViewDidBeginEditing(_ textView: UITextView) {
+            print(textView.contentSize)
+            parent.height = textView.contentSize.height + 16
+        }
+        
         func textViewDidChange(_ textView: UITextView) {
             parent.text = textView.text
-            print(textView.contentSize.height)
             parent.height = textView.contentSize.height + 10
         }
     }

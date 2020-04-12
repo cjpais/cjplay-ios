@@ -21,7 +21,7 @@ struct NoteView: View {
                 .background(
                     RoundedRectangle(cornerRadius: 16.0)
                         .fill(Color.white))
-        }.rotationEffect(.radians(.pi)).scaleEffect(x: -1, y: 1, anchor: .center)
+        }
     }
 }
 

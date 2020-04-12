@@ -11,23 +11,18 @@ import CoreData
 import UIKit
 
 class CJState: ObservableObject {
-    //@Published var notes: [Note]
-    
     @Published var count: Int = 0
     @Published var note: String = ""
+    @Published var textHeight: CGFloat = 0.0
     
     func resetNote() {
         self.note = ""
     }
     
-    func saveNote() {
-        
-    }
-    
     func sendNote() {
         
         if self.note != "" {
-            if let url = URL(string: "http://192.168.1.130:8080/note/new") {
+            if let url = URL(string: "\(ip_addr)/note/new") {
                 let postString = Date().toString() + ": " + self.note
                 let postData = postString.data(using: String.Encoding.utf8)
                 var req = URLRequest(url: url)
@@ -41,7 +36,6 @@ class CJState: ObservableObject {
                 
                 task.resume()
                 
-                self.saveNote()
                 self.resetNote()
             } else {
                 print("something wrong yo")

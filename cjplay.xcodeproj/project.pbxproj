@@ -7,36 +7,47 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2376BB7E2442371D00E0FD5D /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2376BB7D2442371D00E0FD5D /* ViewExtensions.swift */; };
+		2376BB802442390600E0FD5D /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2376BB7F2442390600E0FD5D /* TestView.swift */; };
+		2376BB862442406000E0FD5D /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2376BB852442406000E0FD5D /* DateExtensions.swift */; };
+		2382F7742442A26B00966806 /* CommandPaletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2382F7732442A26B00966806 /* CommandPaletteView.swift */; };
+		2382F7762443887000966806 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2382F7752443886F00966806 /* Config.swift */; };
 		23FB84A7242FD1510099B156 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB84A6242FD1510099B156 /* AppDelegate.swift */; };
 		23FB84A9242FD1510099B156 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB84A8242FD1510099B156 /* SceneDelegate.swift */; };
-		23FB84AB242FD1510099B156 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB84AA242FD1510099B156 /* ContentView.swift */; };
+		23FB84AB242FD1510099B156 /* ConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB84AA242FD1510099B156 /* ConversationView.swift */; };
 		23FB84AD242FD1550099B156 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23FB84AC242FD1550099B156 /* Assets.xcassets */; };
 		23FB84B0242FD1550099B156 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23FB84AF242FD1550099B156 /* Preview Assets.xcassets */; };
 		23FB84B3242FD1550099B156 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23FB84B1242FD1550099B156 /* LaunchScreen.storyboard */; };
-		23FB84BB242FD1950099B156 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB84BA242FD1950099B156 /* CardView.swift */; };
+		23FB84BB242FD1950099B156 /* ConversationInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB84BA242FD1950099B156 /* ConversationInputView.swift */; };
 		23FB84C024300D5D0099B156 /* Notes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 23FB84BE24300D5C0099B156 /* Notes.xcdatamodeld */; };
 		23FB84C524303CAE0099B156 /* CJState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB84C424303CAE0099B156 /* CJState.swift */; };
 		23FB84C7243909660099B156 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB84C6243909660099B156 /* TextView.swift */; };
-		23FB84C924390BC90099B156 /* NotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB84C824390BC90099B156 /* NotesView.swift */; };
+		23FB84C924390BC90099B156 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB84C824390BC90099B156 /* MessageView.swift */; };
 		23FB84CB24390BF80099B156 /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB84CA24390BF80099B156 /* NoteView.swift */; };
 		23FB84CD243912630099B156 /* DateDividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB84CC243912630099B156 /* DateDividerView.swift */; };
 		23FB84CF243929970099B156 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB84CE243929970099B156 /* Note.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2376BB7D2442371D00E0FD5D /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
+		2376BB7F2442390600E0FD5D /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		2376BB852442406000E0FD5D /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
+		2382F74D2442788300966806 /* cjplay.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = cjplay.entitlements; sourceTree = "<group>"; };
+		2382F7732442A26B00966806 /* CommandPaletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandPaletteView.swift; sourceTree = "<group>"; };
+		2382F7752443886F00966806 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		23FB84A3242FD1510099B156 /* cjplay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cjplay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23FB84A6242FD1510099B156 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23FB84A8242FD1510099B156 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		23FB84AA242FD1510099B156 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		23FB84AA242FD1510099B156 /* ConversationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationView.swift; sourceTree = "<group>"; };
 		23FB84AC242FD1550099B156 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		23FB84AF242FD1550099B156 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		23FB84B2242FD1550099B156 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		23FB84B4242FD1550099B156 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		23FB84BA242FD1950099B156 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		23FB84BA242FD1950099B156 /* ConversationInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationInputView.swift; sourceTree = "<group>"; };
 		23FB84BF24300D5D0099B156 /* Notes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Notes.xcdatamodel; sourceTree = "<group>"; };
 		23FB84C424303CAE0099B156 /* CJState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CJState.swift; sourceTree = "<group>"; };
 		23FB84C6243909660099B156 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
-		23FB84C824390BC90099B156 /* NotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesView.swift; sourceTree = "<group>"; };
+		23FB84C824390BC90099B156 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		23FB84CA24390BF80099B156 /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 		23FB84CC243912630099B156 /* DateDividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDividerView.swift; sourceTree = "<group>"; };
 		23FB84CE243929970099B156 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
@@ -53,6 +64,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2376BB7B2442365400E0FD5D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				23FB84BA242FD1950099B156 /* ConversationInputView.swift */,
+				23FB84CA24390BF80099B156 /* NoteView.swift */,
+				23FB84C824390BC90099B156 /* MessageView.swift */,
+				23FB84AA242FD1510099B156 /* ConversationView.swift */,
+				2382F7732442A26B00966806 /* CommandPaletteView.swift */,
+				2376BB7C2442366C00E0FD5D /* Helper */,
+				2376BB7F2442390600E0FD5D /* TestView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		2376BB7C2442366C00E0FD5D /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				23FB84C6243909660099B156 /* TextView.swift */,
+				23FB84CC243912630099B156 /* DateDividerView.swift */,
+				2376BB7D2442371D00E0FD5D /* ViewExtensions.swift */,
+				2376BB852442406000E0FD5D /* DateExtensions.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		23FB849A242FD1510099B156 = {
 			isa = PBXGroup;
 			children = (
@@ -72,21 +108,18 @@
 		23FB84A5242FD1510099B156 /* cjplay */ = {
 			isa = PBXGroup;
 			children = (
+				2382F74D2442788300966806 /* cjplay.entitlements */,
+				2376BB7B2442365400E0FD5D /* Views */,
 				23FB84A6242FD1510099B156 /* AppDelegate.swift */,
 				23FB84A8242FD1510099B156 /* SceneDelegate.swift */,
 				23FB84BE24300D5C0099B156 /* Notes.xcdatamodeld */,
 				23FB84CE243929970099B156 /* Note.swift */,
-				23FB84AA242FD1510099B156 /* ContentView.swift */,
-				23FB84C824390BC90099B156 /* NotesView.swift */,
-				23FB84CC243912630099B156 /* DateDividerView.swift */,
-				23FB84CA24390BF80099B156 /* NoteView.swift */,
 				23FB84C424303CAE0099B156 /* CJState.swift */,
-				23FB84BA242FD1950099B156 /* CardView.swift */,
-				23FB84C6243909660099B156 /* TextView.swift */,
 				23FB84AC242FD1550099B156 /* Assets.xcassets */,
 				23FB84B1242FD1550099B156 /* LaunchScreen.storyboard */,
 				23FB84B4242FD1550099B156 /* Info.plist */,
 				23FB84AE242FD1550099B156 /* Preview Content */,
+				2382F7752443886F00966806 /* Config.swift */,
 			);
 			path = cjplay;
 			sourceTree = "<group>";
@@ -173,13 +206,18 @@
 				23FB84CD243912630099B156 /* DateDividerView.swift in Sources */,
 				23FB84C024300D5D0099B156 /* Notes.xcdatamodeld in Sources */,
 				23FB84A7242FD1510099B156 /* AppDelegate.swift in Sources */,
+				2376BB7E2442371D00E0FD5D /* ViewExtensions.swift in Sources */,
 				23FB84C524303CAE0099B156 /* CJState.swift in Sources */,
 				23FB84C7243909660099B156 /* TextView.swift in Sources */,
 				23FB84A9242FD1510099B156 /* SceneDelegate.swift in Sources */,
-				23FB84BB242FD1950099B156 /* CardView.swift in Sources */,
+				2376BB862442406000E0FD5D /* DateExtensions.swift in Sources */,
+				23FB84BB242FD1950099B156 /* ConversationInputView.swift in Sources */,
 				23FB84CF243929970099B156 /* Note.swift in Sources */,
-				23FB84C924390BC90099B156 /* NotesView.swift in Sources */,
-				23FB84AB242FD1510099B156 /* ContentView.swift in Sources */,
+				23FB84C924390BC90099B156 /* MessageView.swift in Sources */,
+				23FB84AB242FD1510099B156 /* ConversationView.swift in Sources */,
+				2382F7742442A26B00966806 /* CommandPaletteView.swift in Sources */,
+				2382F7762443887000966806 /* Config.swift in Sources */,
+				2376BB802442390600E0FD5D /* TestView.swift in Sources */,
 				23FB84CB24390BF80099B156 /* NoteView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -316,6 +354,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = cjplay/cjplay.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"cjplay/Preview Content\"";
 				DEVELOPMENT_TEAM = UWFLB4GC25;
@@ -336,6 +375,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = cjplay/cjplay.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"cjplay/Preview Content\"";
 				DEVELOPMENT_TEAM = UWFLB4GC25;

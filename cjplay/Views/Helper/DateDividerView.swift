@@ -9,26 +9,29 @@
 import SwiftUI
 
 struct DateDividerView: View {
+    var date: Date
+    
     var body: some View {
-        HStack {
+        ZStack {
             line
-            Text("April 4, 2020")
+            Text(date.toDate())
                 .font(.footnote)
                 .foregroundColor(Color.gray)
-            line
+                //.padding(.horizontal)
+                .lineLimit(1)
+                .background(Color.black)
         }
     }
     
     var line: some View {
         VStack {
             Divider()
-                .padding(.horizontal)
         }
     }
 }
 
 struct DateDividerView_Previews: PreviewProvider {
     static var previews: some View {
-        DateDividerView()
+        DateDividerView(date: Date())
     }
 }

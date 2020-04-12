@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext else {
             fatalError("Unable to read managed object context.")
         }
-        let contentView = ContentView().environment(\.managedObjectContext, context)
+        let contentView = ConversationView().environment(\.managedObjectContext, context)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
@@ -35,6 +35,48 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 print("GET FUCKED")
             }
         }
+        
+        /* Hack code to insert dates correctly into DB lol */
+        do {
+            let notes = try context.fetch(Note.getAllNotes())
+            for (i, note) in notes.enumerated() {
+                note.dateChanged = false
+                if i != 0 {
+                    if !datesAreSameDay(date1: notes[i-1].createdAt, date2: note.createdAt) {
+                        note.dateChanged = true
+                        print(notes[i-1])
+                        print(note)
+                    }
+                }
+                do {
+                    try context.save()
+                } catch {
+                    print(error)
+                }
+            }
+        } catch  {
+            print("cant get notes")
+        }
+        
+    }
+    
+    func datesAreSameDay(date1: Date?, date2: Date?) -> Bool {
+        var ret: Bool = true
+        
+        if date1 != nil && date2 != nil {
+
+            var cal = Calendar(identifier: .gregorian)
+            cal.locale = Locale.current
+
+            let date1Components = cal.dateComponents([.day, .month, .year], from: date1!)
+            let date2Components = cal.dateComponents([.day, .month, .year], from: date2!)
+            
+            if date1Components != date2Components {
+                ret = false
+            }
+        }
+        
+        return ret
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
