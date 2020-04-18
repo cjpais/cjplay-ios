@@ -56,7 +56,9 @@ struct ConversationView: View {
                 
                 if (self.mode == "conversation") {
                     MessageView().frame(height: 404 - min(self.state.textHeight, 175))
+                    //MessageView().frame(height: 200 - min(self.state.textHeight, 175))
                     Spacer()
+                    //CommandPaletteView()
                     ConversationInputView(note: "")
                         .environmentObject(self.state)
                         .padding(.bottom, -getOffset(keyboardHeight: self.keyboardHeight, geometry: geometry))

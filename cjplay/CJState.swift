@@ -22,7 +22,7 @@ class CJState: ObservableObject {
     func sendNote() {
         
         if self.note != "" {
-            if let url = URL(string: "\(ip_addr)/note/new") {
+            if let url = URL(string: "\(ip_addr)\(note_api_path)") {
                 let postString = Date().toString() + ": " + self.note
                 let postData = postString.data(using: String.Encoding.utf8)
                 var req = URLRequest(url: url)
