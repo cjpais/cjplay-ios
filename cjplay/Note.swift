@@ -18,7 +18,7 @@ public class Note: NSManagedObject, Identifiable {
 extension Note {
     static func getAllNotes(ascending: Bool = false) -> NSFetchRequest<Note> {
         let request:NSFetchRequest<Note> = Note.fetchRequest() as! NSFetchRequest<Note>
-        //request.fetchLimit = 5
+        request.fetchLimit = 50
         //request.fetchOffset = 0
         
         let sortDescriptor = NSSortDescriptor(key: "createdAt", ascending: ascending)

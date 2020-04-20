@@ -34,11 +34,14 @@ struct ConversationView: View {
                         }
                     })
                     {
+                        
                         if self.mode == "conversation" {
-                            Image(systemName: "mic.fill")
+                            Text("podcast")
+                            //Image(systemName: "mic.fill")
                         }
                         else {
-                            Image(systemName: "bubble.right.fill")
+                            Text("conversation")
+                            //Image(systemName: "bubble.right.fill")
                         }
                     }
  
