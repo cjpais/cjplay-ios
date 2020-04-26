@@ -17,6 +17,7 @@ struct ConversationView: View {
     @EnvironmentObject var state: CJState
     @State var keyboardHeight: CGFloat = 0
     @State private var mode: String = "conversation"
+    @State private var bool: Bool = false
     
     var body: some View {
         GeometryReader { geometry in
@@ -34,7 +35,6 @@ struct ConversationView: View {
                         }
                     })
                     {
-                        
                         if self.mode == "conversation" {
                             Text("podcast")
                             //Image(systemName: "mic.fill")
@@ -48,17 +48,23 @@ struct ConversationView: View {
                 }
                 .padding([.horizontal, .top])
                 
-                HStack {
-                    Text("test \(self.state.textHeight)")
-                        .font(.subheadline)
-                        .foregroundColor(Color.gray)
-                        .bold()
-                    Spacer()
+                Picker(selection: self.$state.mode, label: Text("mode")) {
+                    ForEach(Mode.allCases) { mode in
+                        Text(mode.string)
+                    }
                 }
-                .padding(.horizontal)
+                .pickerStyle(SegmentedPickerStyle())
                 
+                /*
+                Picker(selection: $state.mode) {
+                    Mode.allCases.forEach {
+                        Text("\($0.rawValue)")
+                    }
+                }.pickerStlye(SegmentedPickerStyle)
+ */
+
                 if (self.mode == "conversation") {
-                    MessageView().frame(height: 404 - min(self.state.textHeight, 175))
+                    MessageView().frame(height: 388 - min(self.state.textHeight, 175))
                     //MessageView().frame(height: 200 - min(self.state.textHeight, 175))
                     Spacer()
                     //CommandPaletteView()
