@@ -29,7 +29,7 @@ struct CommandPaletteView: View {
             
             HStack {
                 //ZStack(alignment: .leading){
-                    TextView(text: self.$state.note, height: self.$state.textHeight)
+                    TextView(text: self.$state.thought, height: self.$state.textHeight)
                     .background(RoundedRectangle(cornerRadius: 30).stroke(Color.gray, lineWidth: 1.0))
                         .offset(y: -min(self.state.textHeight, 175)/2 + 15) // max size of text box/2 + initial height/2
                         .frame(width: self.showCmd ? 370: 40, height: min(40, 175), alignment: .leading)

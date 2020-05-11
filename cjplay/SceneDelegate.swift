@@ -43,7 +43,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 note.dateChanged = false
                 if i != 0 {
                     if !datesAreSameDay(date1: notes[i-1].createdAt, date2: note.createdAt) {
-                        note.dateChanged = true
+                        notes[i-1].dateChanged = true
                         print(notes[i-1])
                         print(note)
                     }

@@ -26,33 +26,23 @@ enum Mode: String, CaseIterable, Identifiable {
 
 class CJState: ObservableObject {
     @Published var count: Int = 0
-    @Published var note: String = ""
+    @Published var thought: String = ""
     @Published var textHeight: CGFloat = 0.0
     @Published var mode: Mode = .stream
     
     private var api_path: String {
-        let s: String
-        
-        switch mode {
-        case .stream:
-            s = note_api_path
-        case .dev:
-            s = note_api_path_dev
-        }
-        
-        return s
+        "/" + mode.rawValue + thoughtApiPath
     }
 
-    func resetNote() {
-        self.note = ""
+    func resetThought() {
+        self.thought = ""
     }
     
-    func sendNote() {
+    func sendThought() {
         
-        if self.note != "" {
+        if self.thought != "" {
             if let url = URL(string: "\(ip_addr)\(api_path)") {
-                let postString = Date().toString() + ": " + self.note
-                let postData = postString.data(using: String.Encoding.utf8)
+                let postData = self.thought.data(using: String.Encoding.utf8)
                 var req = URLRequest(url: url)
                 req.setValue("text/plain", forHTTPHeaderField: "Content-Type")
                 req.httpMethod = "POST"
@@ -64,7 +54,7 @@ class CJState: ObservableObject {
                 
                 task.resume()
                 
-                self.resetNote()
+                self.resetThought()
             } else {
                 print("something wrong yo")
             }

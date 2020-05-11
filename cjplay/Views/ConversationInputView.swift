@@ -18,7 +18,7 @@ struct ConversationInputView: View {
     var body: some View {
         HStack {
             VStack {
-                TextView(text: $state.note, height: $state.textHeight)
+                TextView(text: $state.thought, height: $state.textHeight)
                     .padding(.horizontal)
                     .padding(.vertical, 5.0)
                     .background(RoundedRectangle(cornerRadius: 15).stroke(Color.gray, lineWidth: 1.0))
@@ -29,7 +29,7 @@ struct ConversationInputView: View {
             
             Button(action: {
                 let newNote = Note(context: self.managedObjectContext)
-                newNote.body = self.state.note
+                newNote.body = self.state.thought
                 newNote.createdAt = Date()
                 
                 do {
@@ -40,7 +40,7 @@ struct ConversationInputView: View {
                 
                 self.state.textHeight = 30.0
                 
-                self.state.sendNote()
+                self.state.sendThought()
             })
             {
                 Image(systemName: "arrow.up")
