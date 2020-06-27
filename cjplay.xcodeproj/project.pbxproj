@@ -32,7 +32,6 @@
 		2376BB7D2442371D00E0FD5D /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		2376BB7F2442390600E0FD5D /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		2376BB852442406000E0FD5D /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
-		2382F74D2442788300966806 /* cjplay.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = cjplay.entitlements; sourceTree = "<group>"; };
 		2382F7732442A26B00966806 /* CommandPaletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandPaletteView.swift; sourceTree = "<group>"; };
 		2382F7752443886F00966806 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		23FB84A3242FD1510099B156 /* cjplay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cjplay.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,7 +107,6 @@
 		23FB84A5242FD1510099B156 /* cjplay */ = {
 			isa = PBXGroup;
 			children = (
-				2382F74D2442788300966806 /* cjplay.entitlements */,
 				2376BB7B2442365400E0FD5D /* Views */,
 				23FB84A6242FD1510099B156 /* AppDelegate.swift */,
 				23FB84A8242FD1510099B156 /* SceneDelegate.swift */,

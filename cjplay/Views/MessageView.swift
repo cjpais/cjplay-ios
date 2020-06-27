@@ -21,7 +21,6 @@ struct MessageView: View {
                         if displayDate(note: note) {
                             DateDividerView(date: note.createdAt!)
                                 .padding()
-                                .flip()
                         }
                         HStack() {
                             if displayTime() {
@@ -39,8 +38,7 @@ struct MessageView: View {
                         }
                         .padding(.horizontal)
                         .padding(.bottom, 1.0)
-                        .flip()
-                    }
+                    }.flip()
                 }
             }
         }.flip()
