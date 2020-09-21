@@ -9,6 +9,7 @@
 import Foundation
 import CoreData
 import UIKit
+import Streamable
 
 enum Mode: String, CaseIterable, Identifiable {
     case stream
@@ -16,6 +17,10 @@ enum Mode: String, CaseIterable, Identifiable {
     
     var id: Mode {
         self
+    }
+    
+    var port: String {
+        (self.rawValue == "stream") ? "8080" : "10000"
     }
     
     var string: String {
@@ -31,17 +36,33 @@ class CJState: ObservableObject {
     @Published var mode: Mode = .stream
     
     private var api_path: String {
-        "/" + mode.rawValue + thoughtApiPath
+        ":\(mode.port)/\(mode.rawValue)\(thoughtApiPath)"
+    }
+    
+    private var base_path: String {
+        "\(ip_addr):\(mode.port)/\(mode.rawValue)"
     }
 
     func resetThought() {
         self.thought = ""
     }
     
-    func sendThought() {
+    func sendThought(uuid: UUID) {
         
         if self.thought != "" {
+            let config = StreamConfig(namespace: "cj/notes", name: "thoughts", version: "0.0.1", uuid: uuid, location: nil)
+            let streamable = StreamableData<String>(config: config, data: self.thought)
+            streamable.sendStream(to: base_path,
+                                  completionHandler: { e in
+                                    if e != nil {
+                                        fatalError("failed to send stream. error")
+                                    } else {
+                                        print("completed request")
+                                    }
+                                  })
+            
             if let url = URL(string: "\(ip_addr)\(api_path)") {
+                print(url.absoluteURL)
                 let postData = self.thought.data(using: String.Encoding.utf8)
                 var req = URLRequest(url: url)
                 req.setValue("text/plain", forHTTPHeaderField: "Content-Type")

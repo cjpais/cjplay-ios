@@ -12,8 +12,40 @@ struct ConversationInputView: View {
     
     @Environment(\.managedObjectContext) var managedObjectContext
     
-    @State var note: String
+    @State var note: String = ""
     @EnvironmentObject var state: CJState
+    var onInputComplete: () -> Void = {}
+    
+    var sendButton: some View {
+        Button(action: {
+            let newNote = Note(context: self.managedObjectContext)
+            newNote.id = UUID()
+            newNote.body = self.state.thought
+            newNote.createdAt = Date()
+            
+            do {
+                try self.managedObjectContext.save()
+            } catch {
+                print(error)
+            }
+            
+            self.state.textHeight = 30.0
+            
+            if newNote.id == nil {
+                fatalError("no uuid generated which is big time issue")
+            }
+            self.state.sendThought(uuid: newNote.id!)
+            
+            self.onInputComplete()
+        })
+        {
+            Image(systemName: "arrow.up")
+                .foregroundColor(Color.white)
+                .padding(.all, 9.0)
+                .background(Circle().foregroundColor(Color.blue))
+                .font(Font.system(.body).bold())
+        }.padding(.trailing)
+    }
     
     var body: some View {
         HStack {
@@ -25,31 +57,11 @@ struct ConversationInputView: View {
                     .offset(y: -min(state.textHeight, 175)/2 + 15) // max size of text box/2 + initial height/2
                     .frame(width: 350, height: min(state.textHeight, 175), alignment: .leading)
             }
-            .padding(.bottom)
+            .padding(.horizontal)
             
-            Button(action: {
-                let newNote = Note(context: self.managedObjectContext)
-                newNote.body = self.state.thought
-                newNote.createdAt = Date()
-                
-                do {
-                    try self.managedObjectContext.save()
-                } catch {
-                    print(error)
-                }
-                
-                self.state.textHeight = 30.0
-                
-                self.state.sendThought()
-            })
-            {
-                Image(systemName: "arrow.up")
-                    .foregroundColor(Color.white)
-                    .padding(.all, 9.0)
-                    .background(Circle().foregroundColor(Color.blue))
-                    .font(Font.system(.body).bold())
-            }.padding(.bottom)
+            sendButton
         }
+        .padding(.bottom)
         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 47)
     }
     

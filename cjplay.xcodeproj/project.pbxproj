@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -22,10 +22,13 @@
 		23FB84C024300D5D0099B156 /* Notes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 23FB84BE24300D5C0099B156 /* Notes.xcdatamodeld */; };
 		23FB84C524303CAE0099B156 /* CJState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB84C424303CAE0099B156 /* CJState.swift */; };
 		23FB84C7243909660099B156 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB84C6243909660099B156 /* TextView.swift */; };
-		23FB84C924390BC90099B156 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB84C824390BC90099B156 /* MessageView.swift */; };
+		23FB84C924390BC90099B156 /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB84C824390BC90099B156 /* MessagesView.swift */; };
 		23FB84CB24390BF80099B156 /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB84CA24390BF80099B156 /* NoteView.swift */; };
 		23FB84CD243912630099B156 /* DateDividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB84CC243912630099B156 /* DateDividerView.swift */; };
 		23FB84CF243929970099B156 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB84CE243929970099B156 /* Note.swift */; };
+		BB4B90A924AA74CE008EF8F3 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4B90A824AA74CE008EF8F3 /* MessageView.swift */; };
+		BBC9A0CC24FAED8600ACDB9D /* Streamable in Frameworks */ = {isa = PBXBuildFile; productRef = BBC9A0CB24FAED8600ACDB9D /* Streamable */; };
+		BBEE9F2A24ABBE9900ACA981 /* KeyboardAwareModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEE9F2924ABBE9900ACA981 /* KeyboardAwareModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,10 +49,12 @@
 		23FB84BF24300D5D0099B156 /* Notes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Notes.xcdatamodel; sourceTree = "<group>"; };
 		23FB84C424303CAE0099B156 /* CJState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CJState.swift; sourceTree = "<group>"; };
 		23FB84C6243909660099B156 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
-		23FB84C824390BC90099B156 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		23FB84C824390BC90099B156 /* MessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
 		23FB84CA24390BF80099B156 /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 		23FB84CC243912630099B156 /* DateDividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDividerView.swift; sourceTree = "<group>"; };
 		23FB84CE243929970099B156 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		BB4B90A824AA74CE008EF8F3 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		BBEE9F2924ABBE9900ACA981 /* KeyboardAwareModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardAwareModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBC9A0CC24FAED8600ACDB9D /* Streamable in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,7 +74,8 @@
 			children = (
 				23FB84BA242FD1950099B156 /* ConversationInputView.swift */,
 				23FB84CA24390BF80099B156 /* NoteView.swift */,
-				23FB84C824390BC90099B156 /* MessageView.swift */,
+				23FB84C824390BC90099B156 /* MessagesView.swift */,
+				BB4B90A824AA74CE008EF8F3 /* MessageView.swift */,
 				23FB84AA242FD1510099B156 /* ConversationView.swift */,
 				2382F7732442A26B00966806 /* CommandPaletteView.swift */,
 				2376BB7C2442366C00E0FD5D /* Helper */,
@@ -80,6 +87,7 @@
 		2376BB7C2442366C00E0FD5D /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				BBEE9F2924ABBE9900ACA981 /* KeyboardAwareModifier.swift */,
 				23FB84C6243909660099B156 /* TextView.swift */,
 				23FB84CC243912630099B156 /* DateDividerView.swift */,
 				2376BB7D2442371D00E0FD5D /* ViewExtensions.swift */,
@@ -146,6 +154,9 @@
 			dependencies = (
 			);
 			name = cjplay;
+			packageProductDependencies = (
+				BBC9A0CB24FAED8600ACDB9D /* Streamable */,
+			);
 			productName = cjplay;
 			productReference = 23FB84A3242FD1510099B156 /* cjplay.app */;
 			productType = "com.apple.product-type.application";
@@ -157,7 +168,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1140;
-				LastUpgradeCheck = 1140;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "CJ Pais";
 				TargetAttributes = {
 					23FB84A2242FD1510099B156 = {
@@ -174,6 +185,9 @@
 				Base,
 			);
 			mainGroup = 23FB849A242FD1510099B156;
+			packageReferences = (
+				BBC9A0CA24FAED8600ACDB9D /* XCRemoteSwiftPackageReference "Streamable" */,
+			);
 			productRefGroup = 23FB84A4242FD1510099B156 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -206,12 +220,14 @@
 				23FB84A7242FD1510099B156 /* AppDelegate.swift in Sources */,
 				2376BB7E2442371D00E0FD5D /* ViewExtensions.swift in Sources */,
 				23FB84C524303CAE0099B156 /* CJState.swift in Sources */,
+				BB4B90A924AA74CE008EF8F3 /* MessageView.swift in Sources */,
 				23FB84C7243909660099B156 /* TextView.swift in Sources */,
 				23FB84A9242FD1510099B156 /* SceneDelegate.swift in Sources */,
 				2376BB862442406000E0FD5D /* DateExtensions.swift in Sources */,
 				23FB84BB242FD1950099B156 /* ConversationInputView.swift in Sources */,
+				BBEE9F2A24ABBE9900ACA981 /* KeyboardAwareModifier.swift in Sources */,
 				23FB84CF243929970099B156 /* Note.swift in Sources */,
-				23FB84C924390BC90099B156 /* MessageView.swift in Sources */,
+				23FB84C924390BC90099B156 /* MessagesView.swift in Sources */,
 				23FB84AB242FD1510099B156 /* ConversationView.swift in Sources */,
 				2382F7742442A26B00966806 /* CommandPaletteView.swift in Sources */,
 				2382F7762443887000966806 /* Config.swift in Sources */,
@@ -260,6 +276,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -284,7 +301,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -320,6 +337,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -338,7 +356,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -412,6 +430,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BBC9A0CA24FAED8600ACDB9D /* XCRemoteSwiftPackageReference "Streamable" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:cjpais/Streamable.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BBC9A0CB24FAED8600ACDB9D /* Streamable */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BBC9A0CA24FAED8600ACDB9D /* XCRemoteSwiftPackageReference "Streamable" */;
+			productName = Streamable;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		23FB84BE24300D5C0099B156 /* Notes.xcdatamodeld */ = {

@@ -15,77 +15,64 @@ struct ConversationView: View {
     @FetchRequest(fetchRequest: Note.getAllNotes()) var notes:FetchedResults<Note>
     
     @EnvironmentObject var state: CJState
-    @State var keyboardHeight: CGFloat = 0
+    //@State var keyboardHeight: CGFloat = 0
     @State private var mode: String = "conversation"
     @State private var bool: Bool = false
     
+    var title: some View {
+        Text("Flow")
+            .font(.title)
+            .bold()
+    }
+    
+    var modeSwitch: some View {
+        Button(action: {
+            if self.mode == "conversation" {
+                self.mode = "podcast"
+            } else {
+                self.mode = "conversation"
+            }
+        })
+        {
+            if self.mode == "conversation" {
+                Text("podcast")
+                //Image(systemName: "mic.fill")
+            }
+            else {
+                Text("conversation")
+                //Image(systemName: "bubble.right.fill")
+            }
+        }
+    }
+    
+    var devPicker: some View {
+        Picker(selection: self.$state.mode, label: Text("mode")) {
+            ForEach(Mode.allCases) { mode in
+                Text(mode.string)
+            }
+        }
+        .pickerStyle(SegmentedPickerStyle())
+    }
+    
     var body: some View {
         GeometryReader { geometry in
+            
             VStack {
                 HStack {
-                    Text("Flow")
-                        .font(.title)
-                        .bold()
+                    title
                     Spacer()
-                    Button(action: {
-                        if self.mode == "conversation" {
-                            self.mode = "podcast"
-                        } else {
-                            self.mode = "conversation"
-                        }
-                    })
-                    {
-                        if self.mode == "conversation" {
-                            Text("podcast")
-                            //Image(systemName: "mic.fill")
-                        }
-                        else {
-                            Text("conversation")
-                            //Image(systemName: "bubble.right.fill")
-                        }
-                    }
- 
+                    modeSwitch
                 }
                 .padding([.horizontal, .top])
                 
-                Picker(selection: self.$state.mode, label: Text("mode")) {
-                    ForEach(Mode.allCases) { mode in
-                        Text(mode.string)
-                    }
-                }
-                .pickerStyle(SegmentedPickerStyle())
+                devPicker
                 
-                /*
-                Picker(selection: $state.mode) {
-                    Mode.allCases.forEach {
-                        Text("\($0.rawValue)")
-                    }
-                }.pickerStlye(SegmentedPickerStyle)
- */
-
-                if (self.mode == "conversation") {
-                    MessageView().frame(height: 388 - min(self.state.textHeight, 175))
-                    //MessageView().frame(height: 200 - min(self.state.textHeight, 175))
-                    Spacer()
-                    //CommandPaletteView()
-                    ConversationInputView(note: "")
-                        .environmentObject(self.state)
-                        .padding(.bottom, -getOffset(keyboardHeight: self.keyboardHeight, geometry: geometry))
-                        .onAppear {
-                            NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { (n) in
-                                let value = n.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
-                                let height = value.height
-                                print("keyboard opened")
-                                self.keyboardHeight = height
-                                print("keyboard height", height)
-                            }
-                        }
+                MessagesView().frame(height: 388 - min(self.state.textHeight, 175))
+                Spacer()
+                ConversationInputView(note: "") {
+                    print("LOLOLOL")
                 }
-                else
-                {
-                    Text("HI")
-                    Spacer()
-                }
+                .environmentObject(self.state)
             }
         }
     }
