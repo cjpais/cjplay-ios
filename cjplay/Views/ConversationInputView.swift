@@ -18,26 +18,28 @@ struct ConversationInputView: View {
     
     var sendButton: some View {
         Button(action: {
-            let newNote = Note(context: self.managedObjectContext)
-            newNote.id = UUID()
-            newNote.body = self.state.thought
-            newNote.createdAt = Date()
-            newNote.synced = false
-            
-            do {
-                try self.managedObjectContext.save()
-            } catch {
-                print(error)
+            if self.state.thought != "" {
+                let newNote = Note(context: self.managedObjectContext)
+                newNote.id = UUID()
+                newNote.body = self.state.thought
+                newNote.createdAt = Date()
+                newNote.synced = false
+                
+                do {
+                    try self.managedObjectContext.save()
+                } catch {
+                    print(error)
+                }
+                
+                self.state.textHeight = 30.0
+                
+                if newNote.id == nil {
+                    fatalError("no uuid generated which is big time issue")
+                }
+                self.state.sendThought(note: newNote, context: managedObjectContext)
+                
+                self.onInputComplete()
             }
-            
-            self.state.textHeight = 30.0
-            
-            if newNote.id == nil {
-                fatalError("no uuid generated which is big time issue")
-            }
-            self.state.sendThought(note: newNote, context: managedObjectContext)
-            
-            self.onInputComplete()
         })
         {
             Image(systemName: "arrow.up")

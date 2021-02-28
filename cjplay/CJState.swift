@@ -37,6 +37,23 @@ class CJState: ObservableObject {
     @Published var textHeight: CGFloat = 0.0
     @Published var mode: Mode = .stream
     
+    init () {
+        NotificationCenter.default.addObserver(self, selector: #selector(updateDBNotification(_:)), name: .updateDB, object: UpdateDBData.self)
+    }
+    
+    @objc func updateDBNotification(_ notification: Notification) {
+        print("got notification")
+        if let data = notification.object as? UpdateDBData {
+            print("saving note state")
+            
+            do {
+                try data.context.save()
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
     private var api_path: String {
         "/\(mode.rawValue)\(thoughtApiPath)"
     }
@@ -58,17 +75,12 @@ class CJState: ObservableObject {
                                   completionHandler: { e in
                                     if e != nil {
                                         note.synced = false
-                                        print("failed to send stream. no error")
                                     } else {
                                         note.synced = true
-                                        print("completed request")
                                     }
                                     
-                                    do {
-                                        try context.save()
-                                    } catch {
-                                        print(error)
-                                    }
+                                    let update = UpdateDBData(context: context, note: note)
+                                    NotificationCenter.default.post(name: .updateDB, object: update)
                                   })
             
             if let url = URL(string: "\(ip_addr)\(api_path)") {

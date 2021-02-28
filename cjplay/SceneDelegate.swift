@@ -31,7 +31,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 /* Set all notes as synced */
 //                note.synced = true
                 
-                if note.synced != nil && note.synced as! Bool == false {
+                /* Remove empty notes */
+                if note.body != nil && note.body! == "" {
+                    context.delete(note)
+                } else if note.synced != nil && note.synced as! Bool == false {
                     print("attempting to sync note")
                     state.sendThought(note: note, context: context)
                 }

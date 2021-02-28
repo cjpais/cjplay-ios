@@ -16,14 +16,14 @@ struct MessagesView: View {
     var body: some View {
         ScrollView(.vertical) {
             ScrollViewReader { scrollView in
-                LazyVStack(spacing: 1) {
-                    ForEach(notes.reversed(), id: \.self) { note in
+                VStack(spacing: 1) {
+                    ForEach(notes.reversed()) { note in
                         MessageView(note: note)
                     }
                 }
                 .onReceive(NotificationCenter.default.publisher(for: Notification.Name.init("textUpdate")), perform: { _ in
                     if notes.count > 0 {
-                        scrollView.scrollTo(notes[0])
+                        scrollView.scrollTo(notes[0].id)
                     }
                 })
             }

@@ -10,7 +10,9 @@ import SwiftUI
 
 struct MessageView: View {
     
-    @State var note: Note
+    @Environment(\.managedObjectContext) var managedObjectContext
+    
+    @ObservedObject var note: Note
     
     var body: some View {
         VStack {
