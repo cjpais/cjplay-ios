@@ -22,6 +22,7 @@ struct ConversationInputView: View {
             newNote.id = UUID()
             newNote.body = self.state.thought
             newNote.createdAt = Date()
+            newNote.synced = false
             
             do {
                 try self.managedObjectContext.save()
@@ -34,35 +35,38 @@ struct ConversationInputView: View {
             if newNote.id == nil {
                 fatalError("no uuid generated which is big time issue")
             }
-            self.state.sendThought(uuid: newNote.id!)
+            self.state.sendThought(note: newNote, context: managedObjectContext)
             
             self.onInputComplete()
         })
         {
             Image(systemName: "arrow.up")
                 .foregroundColor(Color.white)
-                .padding(.all, 9.0)
+                .padding(.all, 4.0)
                 .background(Circle().foregroundColor(Color.blue))
                 .font(Font.system(.body).bold())
-        }.padding(.trailing)
+        }
+        .padding(.trailing, 3)
     }
     
     var body: some View {
-        HStack {
-            VStack {
-                TextView(text: $state.thought, height: $state.textHeight)
-                    .padding(.horizontal)
-                    .padding(.vertical, 5.0)
-                    .background(RoundedRectangle(cornerRadius: 15).stroke(Color.gray, lineWidth: 1.0))
-                    .offset(y: -min(state.textHeight, 175)/2 + 15) // max size of text box/2 + initial height/2
-                    .frame(width: 350, height: min(state.textHeight, 175), alignment: .leading)
+        ZStack {
+            TextView(text: $state.thought, height: $state.textHeight)
+                .padding(.horizontal)
+                .padding(.vertical, 5.0)
+                .background(RoundedRectangle(cornerRadius: 15).stroke(Color.gray, lineWidth: 1.0))
+                //.offset(y: -min(state.textHeight, 175)/2 + 15) // max size of text box/2 + initial height/2
+                //.frame(height: min(state.textHeight, 175), alignment: .leading)
+            //.padding(.horizontal)
+        
+            HStack {
+                Spacer()
+                sendButton
             }
-            .padding(.horizontal)
             
-            sendButton
         }
-        .padding(.bottom)
-        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 47)
+        .frame(height: min(state.textHeight, 175))
+        //.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 47)
     }
     
 }

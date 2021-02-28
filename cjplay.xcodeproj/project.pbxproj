@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		235B16CC25C9D80900526FA3 /* KeyboardHeightHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235B16CB25C9D80900526FA3 /* KeyboardHeightHelper.swift */; };
+		235B16CF25C9D94700526FA3 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235B16CE25C9D94700526FA3 /* BaseView.swift */; };
 		2376BB7E2442371D00E0FD5D /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2376BB7D2442371D00E0FD5D /* ViewExtensions.swift */; };
 		2376BB802442390600E0FD5D /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2376BB7F2442390600E0FD5D /* TestView.swift */; };
 		2376BB862442406000E0FD5D /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2376BB852442406000E0FD5D /* DateExtensions.swift */; };
@@ -32,6 +34,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		235B16CB25C9D80900526FA3 /* KeyboardHeightHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHeightHelper.swift; sourceTree = "<group>"; };
+		235B16CE25C9D94700526FA3 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		2376BB7D2442371D00E0FD5D /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		2376BB7F2442390600E0FD5D /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		2376BB852442406000E0FD5D /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
@@ -80,6 +84,7 @@
 				2382F7732442A26B00966806 /* CommandPaletteView.swift */,
 				2376BB7C2442366C00E0FD5D /* Helper */,
 				2376BB7F2442390600E0FD5D /* TestView.swift */,
+				235B16CE25C9D94700526FA3 /* BaseView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -126,6 +131,7 @@
 				23FB84B4242FD1550099B156 /* Info.plist */,
 				23FB84AE242FD1550099B156 /* Preview Content */,
 				2382F7752443886F00966806 /* Config.swift */,
+				235B16CB25C9D80900526FA3 /* KeyboardHeightHelper.swift */,
 			);
 			path = cjplay;
 			sourceTree = "<group>";
@@ -222,6 +228,7 @@
 				23FB84C524303CAE0099B156 /* CJState.swift in Sources */,
 				BB4B90A924AA74CE008EF8F3 /* MessageView.swift in Sources */,
 				23FB84C7243909660099B156 /* TextView.swift in Sources */,
+				235B16CF25C9D94700526FA3 /* BaseView.swift in Sources */,
 				23FB84A9242FD1510099B156 /* SceneDelegate.swift in Sources */,
 				2376BB862442406000E0FD5D /* DateExtensions.swift in Sources */,
 				23FB84BB242FD1950099B156 /* ConversationInputView.swift in Sources */,
@@ -231,6 +238,7 @@
 				23FB84AB242FD1510099B156 /* ConversationView.swift in Sources */,
 				2382F7742442A26B00966806 /* CommandPaletteView.swift in Sources */,
 				2382F7762443887000966806 /* Config.swift in Sources */,
+				235B16CC25C9D80900526FA3 /* KeyboardHeightHelper.swift in Sources */,
 				2376BB802442390600E0FD5D /* TestView.swift in Sources */,
 				23FB84CB24390BF80099B156 /* NoteView.swift in Sources */,
 			);

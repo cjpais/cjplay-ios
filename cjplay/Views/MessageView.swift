@@ -19,6 +19,13 @@ struct MessageView: View {
                     .padding()
             }
             HStack() {
+                
+                if note.synced != nil {
+                    Image(systemName: getNoteSyncIcon(note))
+                } else {
+                    Text("nil")
+                }
+                
                 if displayTime() {
                     if note.createdAt != nil {
                         Text(note.createdAt!.toTime())
@@ -34,6 +41,10 @@ struct MessageView: View {
             }
             .padding(.horizontal)
         }
+    }
+    
+    func getNoteSyncIcon(_ note: Note) -> (String) {
+        return note.synced! as! Bool ? "checkmark.icloud" : "xmark.icloud"
     }
 }
 

@@ -13,6 +13,39 @@ import CoreData
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    
+    private func notesHack(context: NSManagedObjectContext, state: CJState) {
+        /* Hack code to insert dates correctly into DB lol */
+        do {
+            let notes = try context.fetch(Note.getAllNotes())
+            for (i, note) in notes.enumerated() {
+                note.dateChanged = false
+                if i != 0 {
+                    if !datesAreSameDay(date1: notes[i-1].createdAt, date2: note.createdAt) {
+                        notes[i-1].dateChanged = true
+//                        print(notes[i-1])
+//                        print(note)
+                    }
+                }
+                
+                /* Set all notes as synced */
+//                note.synced = true
+                
+                if note.synced != nil && note.synced as! Bool == false {
+                    print("attempting to sync note")
+                    state.sendThought(note: note, context: context)
+                }
+                
+                do {
+                    try context.save()
+                } catch {
+                    print(error)
+                }
+            }
+        } catch  {
+            print("cant get notes")
+        }
+    }
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -28,6 +61,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
             if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                
+                notesHack(context: context, state: appDelegate.cjState)
+                
                 window.rootViewController = UIHostingController(rootView: contentView.environmentObject(appDelegate.cjState))
                 self.window = window
                 window.makeKeyAndVisible()
@@ -36,27 +72,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             }
         }
         
-        /* Hack code to insert dates correctly into DB lol */
-        do {
-            let notes = try context.fetch(Note.getAllNotes())
-            for (i, note) in notes.enumerated() {
-                note.dateChanged = false
-                if i != 0 {
-                    if !datesAreSameDay(date1: notes[i-1].createdAt, date2: note.createdAt) {
-                        notes[i-1].dateChanged = true
-                        print(notes[i-1])
-                        print(note)
-                    }
-                }
-                do {
-                    try context.save()
-                } catch {
-                    print(error)
-                }
-            }
-        } catch  {
-            print("cant get notes")
-        }
+
         
     }
     

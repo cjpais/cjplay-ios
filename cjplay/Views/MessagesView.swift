@@ -21,12 +21,13 @@ struct MessagesView: View {
                         MessageView(note: note)
                     }
                 }
-                .onAppear {
-                    scrollView.scrollTo(notes[0])
-                }
+                .onReceive(NotificationCenter.default.publisher(for: Notification.Name.init("textUpdate")), perform: { _ in
+                    if notes.count > 0 {
+                        scrollView.scrollTo(notes[0])
+                    }
+                })
             }
         }
-        .padding(.bottom, 10)
     }
 }
 

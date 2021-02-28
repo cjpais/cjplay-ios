@@ -15,6 +15,7 @@ struct ConversationView: View {
     @FetchRequest(fetchRequest: Note.getAllNotes()) var notes:FetchedResults<Note>
     
     @EnvironmentObject var state: CJState
+    @ObservedObject var keyboardHeightHelper = KeyboardHeightHelper()
     //@State var keyboardHeight: CGFloat = 0
     @State private var mode: String = "conversation"
     @State private var bool: Bool = false
@@ -56,23 +57,25 @@ struct ConversationView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            
-            VStack {
+                
+            VStack(spacing: 0) {
                 HStack {
                     title
                     Spacer()
                     modeSwitch
                 }
-                .padding([.horizontal, .top])
+                .padding()
                 
-                devPicker
+                devPicker.padding([.horizontal, .bottom])
                 
-                MessagesView().frame(height: 388 - min(self.state.textHeight, 175))
+                MessagesView()
                 Spacer()
                 ConversationInputView(note: "") {
-                    print("LOLOLOL")
+                    NotificationCenter.default.post(Notification(name: .init(rawValue: "textUpdate"), object: nil))
                 }
                 .environmentObject(self.state)
+                .padding([.bottom, .horizontal], 5)
+                .padding(.top, 0)
             }
         }
     }

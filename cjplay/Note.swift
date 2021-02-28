@@ -14,6 +14,7 @@ public class Note: NSManagedObject, Identifiable {
     @NSManaged public var body: String?
     @NSManaged public var createdAt: Date?
     @NSManaged public var dateChanged: NSNumber?
+    @NSManaged public var synced: NSNumber?
 }
 
 extension Note {

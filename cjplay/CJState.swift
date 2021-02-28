@@ -11,6 +11,8 @@ import CoreData
 import UIKit
 import Streamable
 
+let thoughtApiPath: String = "/new/thought"
+
 enum Mode: String, CaseIterable, Identifiable {
     case stream
     case dev
@@ -36,36 +38,45 @@ class CJState: ObservableObject {
     @Published var mode: Mode = .stream
     
     private var api_path: String {
-        ":\(mode.port)/\(mode.rawValue)\(thoughtApiPath)"
+        "/\(mode.rawValue)\(thoughtApiPath)"
     }
     
     private var base_path: String {
-        "\(ip_addr):\(mode.port)/\(mode.rawValue)"
+        "\(ip_addr)/\(mode.rawValue)"
     }
 
     func resetThought() {
         self.thought = ""
     }
     
-    func sendThought(uuid: UUID) {
+    func sendThought(note: Note, context: NSManagedObjectContext) {
         
-        if self.thought != "" {
-            let config = StreamConfig(namespace: "cj/notes", name: "thoughts", version: "0.0.1", uuid: uuid, location: nil)
+        if note.body != "" {
+            let config = StreamConfig(namespace: "cj/notes", name: "thoughts", version: "0.0.1", uuid: note.id!, location: nil, b64auth: streamAuth)
             let streamable = StreamableData<String>(config: config, data: self.thought)
             streamable.sendStream(to: base_path,
                                   completionHandler: { e in
                                     if e != nil {
-                                        fatalError("failed to send stream. error")
+                                        note.synced = false
+                                        print("failed to send stream. no error")
                                     } else {
+                                        note.synced = true
                                         print("completed request")
+                                    }
+                                    
+                                    do {
+                                        try context.save()
+                                    } catch {
+                                        print(error)
                                     }
                                   })
             
             if let url = URL(string: "\(ip_addr)\(api_path)") {
                 print(url.absoluteURL)
-                let postData = self.thought.data(using: String.Encoding.utf8)
+                let postData = note.body!.data(using: String.Encoding.utf8)
                 var req = URLRequest(url: url)
                 req.setValue("text/plain", forHTTPHeaderField: "Content-Type")
+                req.setValue("Basic \(streamAuth)", forHTTPHeaderField: "Authorization")
                 req.httpMethod = "POST"
                 req.httpBody = postData
                 

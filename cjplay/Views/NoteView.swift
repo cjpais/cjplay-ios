@@ -20,7 +20,8 @@ struct NoteView: View {
                 .padding(.horizontal, 11.0)
                 .background(
                     RoundedRectangle(cornerRadius: 16.0)
-                        .fill(Color.white))
+                        .fill(Color.white)
+                )
         }
     }
 }

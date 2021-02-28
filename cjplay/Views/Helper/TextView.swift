@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Foundation
 
 struct TextView: UIViewRepresentable {
     typealias UIViewType = UITextView
@@ -56,6 +57,12 @@ struct TextView: UIViewRepresentable {
         
         func textViewDidChange(_ textView: UITextView) {
             parent.text = textView.text
+            
+            if parent.height != textView.contentSize.height + 10 {
+                // notify the view size is changing
+                NotificationCenter.default.post(Notification(name: .init(rawValue: "textUpdate"), object: nil))
+            }
+            
             parent.height = textView.contentSize.height + 10
         }
     }
